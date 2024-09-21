@@ -16,14 +16,13 @@ jobs:
           GIST_ID: ${{ secrets.GIST_ID }}
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
 
-      # 添加一个步骤来提交和推送更改
+      # 使用您自己的用户名和邮箱提交更改
       - name: Commit updated gist
         run: |
-          git config --global wisdomgo "github-actions[bot]"
-          git config --global 1246045735@qq.com "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "wisdomgo"  
+          git config --global user.email "1246045735@qq.com"  
           git add .
           git commit -m "Update gist with WakaTime summary"
           git push
         env:
-          # 使用 GitHub 提供的自动生成的 token 进行推送
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用自动生成的 GitHub Token
